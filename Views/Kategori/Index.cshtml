@@ -1,0 +1,28 @@
+﻿@using Eticaret.Models.Entity
+@model PagedList.IPagedList<TBLKATEGORİLER>
+@using PagedList
+@using PagedList.Mvc
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<table class="table table-bordered">
+    <tr>
+        <th>URUN ADI</th>
+        <th>MUSTERI ADI</th>
+        <th>SATIS</th>
+        <th>FIYAT</th>
+    </tr>
+    @foreach (var kategori in Model)
+    {
+        <tr>
+            <th>@kategori.KATEGORIID</th>
+            <td>@kategori.KATEGORIAD</td>
+            <td><a href="/Kategori/SIL/@kategori.KATEGORIID" class="btn btn-danger">SIL</a></td>
+            <td><a href="/Kategori/KategoriGetir/@kategori.KATEGORIID" class="btn btn-success">GUNCELLE</a></td>
+        </tr>
+    }
+</table>
+@Html.PagedListPager((IPagedList)Model,sayfa=>Url.Action("Index",new { sayfa }))
+<a href="/Kategori/YeniKategori/" class="btn btn-primary">YENİ KATEGORİ EKLE</a>

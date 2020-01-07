@@ -1,0 +1,40 @@
+﻿@model Eticaret.Models.Entity.TBLURUNLER
+@{
+    ViewBag.Title = "YeniUrun";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+    <form class="form-group" method="post">
+        <div>
+            <label>Urun Adı</label>
+            <input type="text" class="form-control" name="URUNAD" required="" maxlength="25" />
+        </div>
+        <div>
+            <label>Markası</label>
+            <input type="text" class="form-control" name="MARKA" required="" placeholder="Lütfen Markayı Giriniz.." maxlength="25" />
+        </div>
+        <div>
+            <label>Kategori Seçiniz</label>
+            @Html.DropDownListFor(m => m.TBLKATEGORİLER.KATEGORIID, (List<SelectListItem>)ViewBag.dgr, new { @class = "form-control" })
+        </div>
+        <div>
+            <label>Fiyat'ı</label>
+            <input type="text" class="form-control" name="FIYAT" required="" maxlength="25" />
+        </div>
+        <div>
+            <label>Stok Adet</label>
+            <input type="text" class="form-control" name="STOK" required="" maxlength="25" />
+        </div>
+        <div style="margin-top:15px">
+            <button class="btn btn-info" id="btn1">Ürün Ekle</button>
+        </div>
+        <script>
+
+        $('#btn1').click(function() {
+        alert('Ürün Ekleme Başarılı.!!');
+        });
+        </script>
+
+    </form>
+
+
